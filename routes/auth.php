@@ -9,7 +9,10 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Socialite\Facades\Socialite;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])
@@ -33,6 +36,11 @@ Route::middleware('guest')->group(function () {
 
     Route::post('reset-password', [NewPasswordController::class, 'store'])
                 ->name('password.store');
+
+    Route::get('/sign-in/{socialize}', [AuthenticatedSessionController::class, 'socialize'])
+        ->name('socialize');
+
+    Route::get('/sign-in/{socialize}/redirect', [AuthenticatedSessionController::class, 'socializeRedirect']);
 });
 
 Route::middleware('auth')->group(function () {
