@@ -44,12 +44,19 @@
             </x-primary-button>
         </div>
     </form>
+    <hr>
+    <div class="mr-2">Sign in with:</div>
 
-    <x-primary-button class="ml-3">
-        <a href="{{ route('socialize', ['socialize' => 'github']) }}">Sign in with Github</a>
-    </x-primary-button>
-    <x-primary-button class="ml-3">
-        <a href="{{ route('socialize', ['socialize' => 'google']) }}">Sign in with Google</a>
-    </x-primary-button>
+    <div class="mt-4 flex items-center justify-start">
+        <!-- Github Button -->
+        <a href="{{ route('socialize', ['socialize' => 'github']) }}" class="mx-1 px-4 py-2 rounded bg-white text-black hover:bg-blue-600-700 flex items-center">
+            <i class="fa-brands fa-github"></i>&nbsp;GitHub
+        </a>
+        <br>
+        <!-- Google Button -->
+        <a href="{{ route('socialize', ['socialize' => 'google']) }}" class="mx-1 px-4 py-2 rounded bg-red-600 text-white hover:bg-red-500 flex items-center">
+            <i class="fa-brands fa-google"></i>&nbsp;Google
+        </a>
+    </div>
 
 </x-guest-layout>
